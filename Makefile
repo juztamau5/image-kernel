@@ -53,7 +53,7 @@ endif
 .NOTPARALLEL: all
 all: build copy
 
-build: cartesi-linux-config checksum
+build: cartesi-linux-config #checksum
 	docker build -t $(IMG) $(BUILD_ARGS) .
 
 push:
