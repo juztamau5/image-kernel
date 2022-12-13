@@ -16,9 +16,9 @@
 TAG ?= devel
 TOOLCHAIN_DOCKER_REPOSITORY ?= cartesi/toolchain
 TOOLCHAIN_TAG ?= 0.12.0
-KERNEL_VERSION ?= 5.15.63-ctsi-1
+KERNEL_VERSION ?= 6.0.9-ctsi-1
 KERNEL_SRCPATH := dep/linux-${KERNEL_VERSION}.tar.gz
-RISCV_PK_VERSION ?= 1.0.0-ctsi-1
+RISCV_PK_VERSION ?= 1.0.0-ctsi-test
 RISCV_PK_SRCPATH := dep/riscv-pk-${RISCV_PK_VERSION}.tar.gz
 KERNEL_CONFIG ?= configs/default-linux-config
 
