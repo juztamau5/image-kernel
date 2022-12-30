@@ -31,6 +31,7 @@ HEADERS  := linux-headers-$(KERNEL_VERSION).tar.xz
 IMAGE    := linux-nobbl-$(KERNEL_VERSION).bin
 LINUX    := linux-$(KERNEL_VERSION).bin
 SELFTEST := linux-selftest-$(KERNEL_VERSION).ext2
+KVM_MOD  := kvm.ko
 
 BUILD_ARGS :=
 
@@ -86,6 +87,7 @@ copy:
 	   docker cp $$ID:$(BASE)/kernel/artifacts/$(IMAGE)    . && \
 	   docker cp $$ID:$(BASE)/kernel/artifacts/$(LINUX)    . && \
 	   docker cp $$ID:$(BASE)/kernel/artifacts/$(SELFTEST) . && \
+	   docker cp $$ID:$(BASE)/kernel/artifacts/$(KVM_MOD)  . && \
 	   docker rm -v $$ID
 
 cartesi-linux-config:

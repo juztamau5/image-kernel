@@ -13,7 +13,8 @@ HEADERS             := artifacts/linux-headers-$(KERNEL_VERSION).tar.xz
 IMAGE               := artifacts/linux-nobbl-$(KERNEL_VERSION).bin
 LINUX               := artifacts/linux-$(KERNEL_VERSION).bin
 SELFTEST            := artifacts/linux-selftest-$(KERNEL_VERSION).ext2
-ARTIFACTS           := $(HEADERS) $(IMAGE) $(LINUX) $(SELFTEST)
+KVM_MOD             := artifacts/kvm.ko
+ARTIFACTS           := $(HEADERS) $(IMAGE) $(LINUX) $(SELFTEST) $(KVM_MOD)
 
 all: $(ARTIFACTS)
 
@@ -28,6 +29,7 @@ $(LINUX_DIR)/vmlinux $(IMAGE) $(HEADERS) &: $(LINUX_DIR)/.config
 		INSTALL_HDR_PATH=$(abspath work/linux-headers)
 	tar cJf $(HEADERS) $(abspath work/linux-headers)
 	cp work/linux/arch/riscv/boot/Image $(IMAGE)
+	cp work/linux/arch/riscv/kvm/kvm.ko $(KVM_MOD)
 
 env:
 	@echo export ARCH=riscv
