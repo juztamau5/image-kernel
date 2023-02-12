@@ -791,7 +791,7 @@ CONFIG_HVC_RISCV_SBI=y
 # CONFIG_XILLYBUS is not set
 # end of Character devices
 
-# CONFIG_RANDOM_TRUST_BOOTLOADER is not set
+CONFIG_RANDOM_TRUST_BOOTLOADER=y
 
 #
 # I2C support
