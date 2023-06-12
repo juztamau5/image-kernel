@@ -101,7 +101,7 @@ run-selftest:
 
 # clone (for non CI environment)
 # ------------------------------------------------------------------------------
-clone: LINUX_BRANCH ?= linux-5.15.63-ctsi-y
+clone: LINUX_BRANCH ?= linux-6.1.33-ctsi-y
 clone: OPENSBI_BRANCH ?= opensbi-1.2-ctsi-y
 clone:
 	git clone --depth 1 --branch $(LINUX_BRANCH) \
