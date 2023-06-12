@@ -85,14 +85,14 @@ run-selftest:
 
 # clone (for non CI environment)
 # ------------------------------------------------------------------------------
-clone: LINUX_BRANCH ?= linux-5.5.19-ctsi-y
-clone: RISCV_PK_BRANCH ?= v1.0.0-ctsi-1
+clone: LINUX_BRANCH ?= linux-6.1.33-ctsi-y
+clone: RISCV_PK_BRANCH ?= riscv-pk-1.0.0-ctsi-y
 clone:
 	git clone --depth 1 --branch $(LINUX_BRANCH) \
-		git@github.com:cartesi-corp/linux.git $(LINUX_DIR) || \
+		git@github.com:cartesi/linux.git $(LINUX_DIR) || \
 		cd $(LINUX_DIR) && git pull
 	git clone --depth 1 --branch $(RISCV_PK_BRANCH) \
-		git@github.com:cartesi-corp/riscv-pk.git $(RISCV_PK_DIR) || \
+		git@github.com:cartesi/riscv-pk.git $(RISCV_PK_DIR) || \
 		cd $(RISCV_PK_DIR) && git pull
 
 run: IMG=cartesi/toolchain:devel
