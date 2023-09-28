@@ -24,10 +24,10 @@ IMAGE_KERNEL_VERSION?= $(MAJOR).$(MINOR).$(PATCH)$(LABEL)
 
 UNAME:=$(shell uname)
 
-TAG ?= devel
-TOOLCHAIN_REPOSITORY ?= cartesi/toolchain
-TOOLCHAIN_TAG ?= 0.15.0
-KERNEL_VERSION ?= 5.15.63-ctsi-2
+TAG ?= $(MAJOR).$(MINOR).$(PATCH)
+TOOLCHAIN_REPOSITORY ?= juztamau5/toolchain
+TOOLCHAIN_TAG ?= 0.15.1
+KERNEL_VERSION ?= 6.1.33-ctsi-y
 KERNEL_SRCPATH := dep/linux-${KERNEL_VERSION}.tar.gz
 OPENSBI_VERSION ?= opensbi-1.2-ctsi-y
 OPENSBI_SRCPATH := dep/opensbi-${OPENSBI_VERSION}.tar.gz
@@ -35,7 +35,7 @@ KERNEL_CONFIG ?= configs/default-linux-config
 
 CONTAINER_BASE := /opt/cartesi/kernel
 
-IMG ?= cartesi/linux-kernel:$(TAG)
+IMG ?= juztamau5/linux-kernel:$(TAG)
 BASE:=/opt/riscv
 
 ifeq ($(UNAME),Darwin)
@@ -122,7 +122,7 @@ cartesi-linux-config:
 	cp $(KERNEL_CONFIG) ./cartesi-linux-config
 
 $(KERNEL_SRCPATH):
-	wget -O $@ https://github.com/cartesi/linux/archive/v$(KERNEL_VERSION).tar.gz
+	wget -O $@ https://github.com/juztamau5/linux/archive/6.1.tar.gz
 
 clean-config:
 	rm -f ./cartesi-linux-config
@@ -142,6 +142,6 @@ shasumfile: $(KERNEL_SRCPATH) $(OPENSBI_SRCPATH)
 
 download: checksum
 
-$(OPENSBI_SRCPATH): URL=https://github.com/cartesi/opensbi/archive/${OPENSBI_VERSION}.tar.gz
+$(OPENSBI_SRCPATH): URL=https://github.com/juztamau5/opensbi/archive/${OPENSBI_VERSION}.tar.gz
 $(OPENSBI_SRCPATH): | dep
 	T=`mktemp` && wget "$(URL)" -O $$T && mv $$T $@ || rm $$T

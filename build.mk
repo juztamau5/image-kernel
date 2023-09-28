@@ -101,17 +101,17 @@ run-selftest:
 
 # clone (for non CI environment)
 # ------------------------------------------------------------------------------
-clone: LINUX_BRANCH ?= linux-6.1.33-ctsi-y
+clone: LINUX_BRANCH ?= 6.1
 clone: OPENSBI_BRANCH ?= opensbi-1.2-ctsi-y
 clone:
 	git clone --depth 1 --branch $(LINUX_BRANCH) \
-		git@github.com:cartesi/linux.git $(LINUX_DIR) || \
+		git@github.com:juztamau5/linux.git $(LINUX_DIR) || \
 		cd $(LINUX_DIR) && git pull
 	git clone --depth 1 --branch $(OPENSBI_BRANCH) \
-		git@github.com:cartesi/opensbi.git $(OPENSBI_DIR) || \
+		git@github.com:juztamau5/opensbi.git $(OPENSBI_DIR) || \
 		cd $(OPENSBI_DIR) && git pull
 
-run: IMG=cartesi/toolchain:devel
+run: IMG=juztamau5/toolchain:devel
 run:
 	$(MAKE) run IMG=$(IMG)
 
